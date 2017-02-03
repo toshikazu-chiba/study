@@ -1,0 +1,108 @@
+@charset "utf-8";
+@import "_reset";
+@import "_mixin";
+
+// ヘッダー
+#header {
+	& > .inner {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px;
+		& > .left_content {
+			flex: 0 1 auto;
+		}
+		& > .right_content {
+			flex: 0 1 auto;
+		}
+	}
+	.header_site_title {
+		font-size: $large_font_size;
+	}
+	.header_subnav {
+		& > ul {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			& > li {
+				flex: 0 1 auto;
+				border-left: solid 1px $base_color;
+				border-right: solid 1px $base_color;
+				& + li {
+					margin-left: -1px;
+				}
+				& > a {
+					display: block;
+					padding: 1px 3px;
+					text-align: center;
+					font-size: $small_font_size;
+				}
+			}
+		}
+	}
+}
+
+// グロナビ
+#gnav {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: $base_gray;
+	& > .inner {
+		& > ul {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			& > li {
+				flex: 1 1 auto;
+				border-left: solid 1px $white;
+				border-right: solid 1px $white;
+				& + li {
+					margin-left: -1px;
+				}
+				& > a {
+					display: block;
+					padding: 6px 5px;
+					text-align: center;
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+#container {
+	& > .inner {
+		
+	}
+}
+
+// フッター
+#footer {
+	background-color: $black;
+	color: $white;
+	& > .inner {
+		color: inherit;
+		& > .footer_copyright {
+			text-align: center;
+		}
+	}
+	.footer_copyright {
+		color: inherit;
+		font-size: $small_font_size;
+	}
+}
+
+
+// サイト幅
+.document_size {
+	box-sizing: border-box;
+	@if $requid_key == false {
+		min-width: $document_width;
+	}
+	& > .inner {
+		max-width: $document_width;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		box-sizing: inherit;
+	}
+}

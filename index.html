@@ -1,30 +1,22 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" ng-app="sampleApp">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="common/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="common/css/common.css">
-	<link rel="stylesheet" type="text/css" href="common/css/style.css">
-	<script type="text/javascript" src="common/js/libs/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="common/js/common.js"></script>
+	<link rel="stylesheet" type="text/css" href="resource/css/common.css">
+	<link rel="stylesheet" type="text/css" href="resource/css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="action/controller/main.js"></script>
 </head>
-<body>
+<body ng-controller="mainCtrl">
 	<div id="wrapper">
-		<header id="header">
-			<h1 class="common_site_title">サンプルサイト</h1>
-		</header>
-		<div id="container">
-			<header>
-				<h2 class="common_page_title">サンプルページ</h2>
-			</header>
-			<div class="content">
-				
-			</div>
-		</div>
-		<footer id="footer">
-			<small id="common_copyright">©2017 samplesite</small>
-		</footer>
+		<ng-include src="incHeader"></ng-include>
+		<ng-include src="incGnav"></ng-include>
+		<ng-include src="incContainer"></ng-include>
+		<ng-include src="incFooter"></ng-include>
 	</div>
+	<script type="text/javascript" src="resource/js/common.js"></script>
 </body>
 </html>

@@ -1,0 +1,28 @@
+@charset "utf-8";
+// 色
+$base_color: #333333;
+$black: #000000;
+$white: #ffffff;
+$base_gray: #999999;
+
+
+// 文字関連
+$base_font_family: '"Meiryo","Hiragino Kaku Gothic ProN","MS PGothic",sans-serif';
+
+// 文字サイズ
+$small_font_size: 12px;
+$base_font_size: 14px;
+$little_large_font_size: 16px;
+$large_font_size: 18px;
+$largest_font_size: 20px;
+
+// ドキュメント関連
+// pc
+$document_width: 1024px;
+// スマホ
+$sp_document_width: 768px;
+
+// サイト幅固定 or リキッド
+// true: リキッド
+// false: 固定
+$requid_key: true;

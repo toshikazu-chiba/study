@@ -1,0 +1,19 @@
+@charset "utf-8";
+@import "_valiable";
+
+// media query
+// $target
+	// tablet: タブレット設定用
+	// sp: スマホ設定用
+@mixin media_query ($media_type, $target) {
+	$targetArea: '';
+	@if $target == 'tablet' {
+		$targetArea: "(min-width: #{$document_width}) and (max-width: #{$sp_document_width})";
+	} @else if $target == 'sp' {
+		$targetArea: "(max-width: #{$sp_document_width})";
+	}
+	@media #{$media_type} and #{$targetArea} {
+		@content;
+	}
+}
+
