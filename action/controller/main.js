@@ -1,35 +1,65 @@
-var SampleApp = {};
+var Main = {};
 
-SampleApp.commonMethod = {
-	// インクルードされるテンプレートのディレクトリパス
-	tmpDir: 'action/view/templates/base/'
-	// インクルードされるテンプレート内で読み込まれるテンプレートのディレクトリパス
-	,incDir: 'action/view/templates/base/inc/'
+Main.Config = {
+	// アプリ基本設定
+	appTtl: 'サンプルアプリ'
+	,pageTtl: 'サンプルタイトル'
+	,copyright: '©2017 sapmle app'
+
+	// デバイススイッチ
+	,deviceMode: function () {
+		var documentSizeSp = 768;
+		if (document.width >= documentSizeSp) {
+			return 'pc';
+		} else if (document.width < documentSizeSp) {
+			return 'sp';
+		}
+	}
+
 	// テンプレートファイル読み込み記法
-	,incTmp: function (dir, fileName) {
+	,incTpl: function (type, fileName) {
+		baseDir = 'action/view/templates/base/';
+
+		switch (type) {
+			// baseディレクトリのファイル読み込み(PCの場合)
+			case 'basePc':
+				dir = baseDir;
+				break;
+			// baseディレクトリのファイル読み込み(SPの場合)
+			case 'baseSp':
+				dir = baseDir;
+				break;
+			// インクルードされるテンプレート内で読み込まれるテンプレートのディレクトリパス
+			case 'inc':
+				dir = baseDir + '/inc/';
+				break;
+		}
+
 		return dir + fileName + '.html';
 	}
 }
 
-SampleApp.Config = {
-	appTtl: 'サンプルアプリ'
-	,pageTtl: 'サンプルタイトル'
-	,copyright: '©2017 sapmle app'
-}
-
 angular.module('sampleApp', ['headerMdl', 'gnavMdl', 'containerMdl', 'footerMdl'])
 	.controller ('mainCtrl', ['$scope', function ($scope) {
-		$scope.incHeader = SampleApp.commonMethod.incTmp (SampleApp.commonMethod.tmpDir, 'tpl_header');
-		$scope.incGnav = SampleApp.commonMethod.incTmp (SampleApp.commonMethod.tmpDir, 'tpl_gnav');
-		$scope.incContainer = SampleApp.commonMethod.incTmp (SampleApp.commonMethod.tmpDir, 'tpl_container');
-		$scope.incFooter = SampleApp.commonMethod.incTmp (SampleApp.commonMethod.tmpDir, 'tpl_footer');
+		$scope.incHeader = Main.Config.incTpl ('basePc', 'tpl_header');
+		$scope.incGnav = Main.Config.incTpl ('basePc', 'tpl_gnav');
+		$scope.incContainer = Main.Config.incTpl ('basePc', 'tpl_container');
+		$scope.incFooter = Main.Config.incTpl ('basePc', 'tpl_footer');
 	}]);
 
 angular.module('headerMdl', [])
 	.controller ('headerCtrl', ['$scope', function ($scope) {
-		$scope.appTtl = SampleApp.Config.appTtl;
+		$scope.appTtl = Main.Config.appTtl;
 
-		$scope.incHeaderSubnav = SampleApp.commonMethod.incTmp (SampleApp.commonMethod.incDir, 'inc_header_subnav');
+		$scope.incHeaderSubnav = Main.Config.incTpl ('inc', 'inc_header_subnav');
+
+		if (Main.Config.deviceMode() == 'pc') {
+			$scope.pcMode = true;
+			$scopeGnavSp = Main.Config.incTpl('basePc', 'tpl_gnav');
+		} else if (Main.Config.deviceMode() == 'sp') {
+			$scope.pcMode = false;
+			$scopeGnavSp = Main.Config.incTpl('baseSp', 'tpl_gnav');
+		}
 	}]);
 
 angular.module('gnavMdl', [])
@@ -69,10 +99,10 @@ angular.module('gnavMdl', [])
 
 angular.module('containerMdl', [])
 	.controller ('containerCtrl', ['$scope', function ($scope) {
-		$scope.pageTtl = SampleApp.Config.pageTtl;
+		$scope.pageTtl = Main.Config.pageTtl;
 	}]);
 
 angular.module('footerMdl', [])
 	.controller ('footerCtrl', ['$scope', function ($scope) {
-		$scope.copyright = SampleApp.Config.copyright;
+		$scope.copyright = Main.Config.copyright;
 	}]);
