@@ -1,10 +1,5 @@
-<div class="header_subnav">
+<div class="header_subnav" ng-controller="headerSubNavCtrl">
 	<ul>
-		<li><a href="/">サブナビ1</a></li>
-		<li><a href="/">サブナビ2</a></li>
-		<li><a href="/">サブナビ3</a></li>
-		<li><a href="/">サブナビ4</a></li>
-		<li><a href="/">サブナビ5</a></li>
-		<li><a href="/">サブナビ6</a></li>
+		<li ng-repeat="item in items"><a href="{{item.path}}">{{item.name}}</a></li>
 	</ul>
 </div>

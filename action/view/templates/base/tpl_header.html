@@ -4,8 +4,8 @@
 			<h1 class="header_site_title">{{appTtl}}</h1>
 		</div>
 		<div class="right_content">
-			<ng-include src="incHeaderSubnav"></ng-include>
-			<ng-include src="incGnavSp" ng-if="spMode"></ng-include>
+			<ng-include src="incHeaderSubnav" ng-if="pcDisp"></ng-include>
+			<ng-include src="incGnavSp" ng-if="spDisp"></ng-include>
 		</div>
 	</div>
 </header>

@@ -5,18 +5,20 @@
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="resource/css/common.css">
 	<link rel="stylesheet" type="text/css" href="resource/css/style.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="action/controller/main.js"></script>
 </head>
 <body ng-controller="mainCtrl">
 	<div id="wrapper">
 		<ng-include src="incHeader"></ng-include>
-		<ng-include src="incGnav"></ng-include>
+		<ng-include src="incGnav" ng-if="pcDisp"></ng-include>
 		<ng-include src="incContainer"></ng-include>
 		<ng-include src="incFooter"></ng-include>
 	</div>
+	<ng-include src="incDinamicCnt"></ng-include>
+	<script type="text/javascript" src="action/controller/main.js"></script>
 	<script type="text/javascript" src="resource/js/common.js"></script>
 </body>
 </html>
